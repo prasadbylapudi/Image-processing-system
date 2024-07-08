@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* padding: 20px; */
+        }
+        nav {
+            width: 98%;
+            background-color: #007bff;
+            padding: 10px 0;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            /* max-width: 800px; */
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .download-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home Page</a>
+        <a href="/api/csvData">CSV Data Page</a>
+    </nav>
+    <div class="container">
+        <h1>Product Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Product Name</th>
+                    <th>Input Image URLs</th>
+                    <th>Output Image URLs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product=> { %>
+                    <tr>
+                        <td>
+                            <%= product.SerialNumber %>
+                        </td>
+                        <td>
+                            <%= product.ProductName %>
+                        </td>
+                        <td>
+                            <%= product.InputImageUrls.join(', ') %></td>
+                        <td><%= product.OutputImageUrls.join(' , ') %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="#" class="download-btn" id="download-csv">Download CSV</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const products = <%- JSON.stringify(products) -%>;
+
+                document.getElementById('download-csv').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    console.log("button clicked")
+                    const csvContent = "data:text/csv;charset=utf-8," +
+                        "Serial Number,Product Name,Input Image URLs,Output Image URLs\n" +
+                        products.map(product => {
+                            return `${product.SerialNumber},"${product.ProductName}","${product.InputImageUrls.join('|')}","${product.OutputImageUrls.join('|')}"`;
+                        }).join('\n');
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', encodedUri);
+                    link.setAttribute('download', 'products.csv');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);  // Clean up
+                });
+            });
+
+    </script>
+</body>
+
+</html>
