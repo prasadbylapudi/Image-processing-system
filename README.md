@@ -105,7 +105,7 @@ The Image Processing System is a web application that allows users to upload a C
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo/image-processing-system.git
+   git clone https://github.com/prasadbylapudi/Image-processing-system.git
    ```
 
 2. Navigate to the project directory:
@@ -120,11 +120,15 @@ The Image Processing System is a web application that allows users to upload a C
    npm install
    ```
 
-4. Create a `.env` file and add your MongoDB connection string:
+4. Create a `.env` file and add your MongoDB connection string and Cloudinary details:
 
-   ```env
-   MONGODB_URI=your-mongodb-connection-string
-   ```
+```env
+MONGO_URI=your-mongodb-connection-string
+CLOUD_NAME=<name>
+API_KEY=<key>
+API_SECRET=<secret>
+
+```
 
 5. Start the server:
 
