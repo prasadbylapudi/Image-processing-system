@@ -32,6 +32,10 @@ The Image Processing System is a web application that allows users to upload a C
 - **HTML/CSS**: Markup and styling for the web pages.
 - **EJS**: Embedded JavaScript templating for rendering dynamic content.
 
+  ![csv data file](https://github.com/prasadbylapudi/Image-processing-system/assets/31813770/4d07f4e0-7e71-44f3-a1e4-47554e290858)
+![home page ](https://github.com/prasadbylapudi/Image-processing-system/assets/31813770/0ca84cee-6203-4fb9-aa0a-789d90e7bbc1)
+
+
 ## API Endpoints
 
 ### 1. Upload API
