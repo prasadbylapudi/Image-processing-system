@@ -36,6 +36,10 @@ The Image Processing System is a web application that allows users to upload a C
 
 ### 1. Upload API
 
+Here is the sample CSV file to upload
+
+https://drive.google.com/file/d/1BwQ2j-qu1iIK9YDUODhVV6fDG8amTehg/view?usp=sharing
+
 - **URL**: `/api/upload`
 - **Method**: `POST`
 - **Description**: Accepts the CSV file and returns a unique request ID.
@@ -82,6 +86,9 @@ The Image Processing System is a web application that allows users to upload a C
      ```
 
 4. **Product Data Endpoint**
+Here is the end point for seeing all the csv data after image processing.
+https://image-processing-system.onrender.com/api/csvData
+
    - **URL**: `/api/products`
    - **Method**: `GET`
    - **Description**: Retrieves all processed product data.
