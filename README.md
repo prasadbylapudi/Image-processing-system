@@ -16,11 +16,13 @@ The Image Processing System is a web application that allows users to upload a C
 ### Backend
 
 - **Node.js**: JavaScript runtime for the server.
+- **TypeScript**:A typed superset of JavaScript that compiles to plain JavaScript, providing improved maintainability and scalability.
 - **Express**: Web framework for building the API.
 - **Mongoose**: MongoDB object modeling tool for Node.js.
 - **Axios**: Promise-based HTTP client for the browser and Node.js.
 - **Multer**: Middleware for handling multipart/form-data, used for file uploads.
 - **uuid**: Library for generating unique identifiers.
+- **Zod** : Library for backend schema validation and primarily used for data validation in TypeScript applications.
 
 ### Frontend
 
